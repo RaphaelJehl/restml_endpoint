@@ -8,7 +8,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import sklearn
 import pickle
-
+from tensorflow import keras
 
 # import, prepare train/test, scale
 
@@ -29,20 +29,32 @@ X_test = X_test / 255.0
 
 
 # create and train simple keras NN
-model = tf.keras.Sequential([
-    tf.keras.layers.Dense(128, activation='relu'),
-    tf.keras.layers.Dense(10)
+# model = tf.keras.Sequential([
+#     tf.keras.layers.Dense(128, activation='relu'),
+#     tf.keras.layers.Dense(10)
+# ])
+
+# model.compile(optimizer='adam',
+#               loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
+#               metrics=['accuracy'])
+
+# model.fit(X_train, y_train, batch_size=32, epochs=10)
+
+# probability_model = tf.keras.Sequential([model, tf.keras.layers.Softmax()])
+# probability_predictions = probability_model.predict(X_test)
+
+
+model = keras.Sequential([
+    keras.layers.Flatten(input_shape=(X_train.shape[1:])),
+    keras.layers.Dense(128, activation='relu'),
+    keras.layers.Dense(10, activation='softmax')
 ])
 
 model.compile(optimizer='adam',
-              loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
+              loss='sparse_categorical_crossentropy',
               metrics=['accuracy'])
 
-model.fit(X_train, y_train, batch_size = 8, epochs=10)
-
-probability_model = tf.keras.Sequential([model, tf.keras.layers.Softmax()])
-predictions = probability_model.predict(X_test)
-
+model.fit(X_train, y_train, batch_size=32, epochs=35)
 
 # save model with pickle
 pickle.dump(model, open('model.pkl','wb'))

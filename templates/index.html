@@ -2,13 +2,16 @@
 <html>
 <head>
   <title>Fashion MNIST prediction</title>
-  <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-  <h1>Input a row of pixels:</h1>
+  <h1>Fashion MNIST prediction</h1>
+  <h4>Input a row of pixels:</h4>
   <form action="/predict" method="POST">
     <input type="text" name="user_input">
     <button type="submit">Predict object</button>
   </form>
+  {% if prediction %}
+  <p class="text-center">Object is a {{prediction}}</p>
+  {% endif %}
 </body>
 </html>
