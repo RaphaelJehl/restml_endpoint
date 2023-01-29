@@ -2,5 +2,3 @@ numpy
 flask
 tensorflow
 pandas
-matplotlib
-scikit-learn

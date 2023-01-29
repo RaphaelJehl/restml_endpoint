@@ -1,10 +1,6 @@
 import numpy as np
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, render_template
 import pickle
-import tensorflow as tf
-import pandas as pd
-import matplotlib.pyplot as plt
-import sklearn
 from classes import class_label
 
 app = Flask(__name__)

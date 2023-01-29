@@ -1,12 +1,8 @@
 """"
 ML model to predict fashion mnist classes using a simple keras NN
 """
-
-import tensorflow as tf
+import tensorflow
 import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-import sklearn
 import pickle
 from tensorflow import keras
 
