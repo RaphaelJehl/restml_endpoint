@@ -27,23 +27,7 @@ class_names = ['T-shirt/top', 'Trouser', 'Pullover', 'Dress', 'Coat',
 X_train = X_train / 255.0
 X_test = X_test / 255.0
 
-
-# create and train simple keras NN
-# model = tf.keras.Sequential([
-#     tf.keras.layers.Dense(128, activation='relu'),
-#     tf.keras.layers.Dense(10)
-# ])
-
-# model.compile(optimizer='adam',
-#               loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
-#               metrics=['accuracy'])
-
-# model.fit(X_train, y_train, batch_size=32, epochs=10)
-
-# probability_model = tf.keras.Sequential([model, tf.keras.layers.Softmax()])
-# probability_predictions = probability_model.predict(X_test)
-
-
+# create and train NN
 model = keras.Sequential([
     keras.layers.Flatten(input_shape=(X_train.shape[1:])),
     keras.layers.Dense(128, activation='relu'),
