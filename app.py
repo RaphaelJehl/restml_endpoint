@@ -14,7 +14,7 @@ def home():
 
 
 # predict route
-@app.route('/classify',methods=['POST'])
+@app.route('/classify',methods=['GET', 'POST'])
 def predict():
     # retrieve 784 pixels from input form
     int_features = [eval(x) for x in request.form.values()]
